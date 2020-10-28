@@ -24,13 +24,14 @@
     "@material-ui/styles": "^4.10.0",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.5.3",
     "bootstrap-autocomplete": "^2.3.7",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "jquery": "^3.4.1",
     "mongoose": "^5.10.10",
     "path": "^0.12.7",
+    "react-bootstrap": "^1.4.0",
     "typed.js": "^2.0.10"
   }
 }
