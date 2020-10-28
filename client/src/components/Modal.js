@@ -1,13 +1,16 @@
 import React from 'react';
-import { Modal,Button,Row,Col,Form} from 'react-bootstrap';
+import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
 
 export default function SignupModal(props) {
+    const showHideClassName = props.showModal ? "modal display-block" : "modal display-none";
     return (
         <Modal
             {...props}
-            size="lg"
+            size="md"
+            className={showHideClassName}
             aria-labelledby="contained-modal-title-vcenter"
             centered
+            show={props.show} onHide={props.onHide}
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -16,7 +19,7 @@ export default function SignupModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form>
-                    <Row>
+                    <Row style={{marginBottom:"20px"}}>
                         <Col>
                             <Form.Control placeholder="First name" />
                         </Col>
@@ -40,4 +43,5 @@ export default function SignupModal(props) {
         </Modal>
     );
 }
+
 
