@@ -1,4 +1,5 @@
 const authController = require('../controllers/authController.js');
+const path = require("path");
 
 module.exports = function (router) {
     router.post('/api/signup', function (req, res) {
@@ -17,11 +18,11 @@ module.exports = function (router) {
             else res.status(200).json({ "message": "Authentication successful" });
         }
 
-        authController.searchByEmail(req.body.email,req.body.password, callback)
+        authController.searchByEmail(req.body.email, req.body.password, callback)
     })
 
     // If no API routes are hit, send the React app
-    router.use(function (req, res) {
+    router.all('*', function (req, res) {
         res.sendFile(path.join(__dirname, "../client/build/index.html"));
     });
 
