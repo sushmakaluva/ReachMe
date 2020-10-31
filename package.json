@@ -30,6 +30,7 @@
     "if-env": "^1.0.4",
     "jquery": "^3.4.1",
     "mongoose": "^5.10.10",
+    "node": "^15.0.1",
     "path": "^0.12.7",
     "react-bootstrap": "^1.4.0",
     "typed.js": "^2.0.10"

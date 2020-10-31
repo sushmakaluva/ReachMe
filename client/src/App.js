@@ -7,6 +7,8 @@ import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
+import NavBar from './components/NavBar';
+import Posts from './Posts';
 
 function App() {
 
