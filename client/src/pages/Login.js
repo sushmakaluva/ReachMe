@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import API from "../utils/API";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -18,7 +18,8 @@ export default function Login(props) {
         setFormObject({ ...formObject, [name]: value })
     }
 
-    const manageOnClick = (e) => {
+    const manageOnSubmit = (e) => {
+        e.preventDefault();
         API.userLogin({
             email: formObject.email,
             password: formObject.password
@@ -33,7 +34,7 @@ export default function Login(props) {
 
     return (
         <div>
-            <Form>
+            <Form onSubmit={manageOnSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleInputChange} />
@@ -42,7 +43,7 @@ export default function Login(props) {
                     <Form.Label>Enter Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" onChange={handleInputChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit" onClick={manageOnClick}>
+                <Button variant="primary" type="submit">
                     Log In
                 </Button>
             </Form>
