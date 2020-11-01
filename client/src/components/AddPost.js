@@ -1,13 +1,12 @@
 import React from 'react';
 import NavTag from '../components/NavTag';
-import Posts from '../components/Posts';
 
-export default function Homepage() {
 
+export default function AddPost() {
     return (
         <div>
             <NavTag />
-            <Posts />
+            <h1>Hello</h1>
         </div>
     )
 }
