@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Nav, NavDropdown, NavbarBrand, Navbar } from 'react-bootstrap';
 import logo from "../reachme_logo.png";
 import 'font-awesome/css/font-awesome.min.css';
 
 export default function NavTag() {
+    const [loggedOut, setLoggedOut] = useState(false);
 
     const navStyle = {
         height: "70px",
@@ -13,6 +15,15 @@ export default function NavTag() {
     const navLinkStyle = {
         color: "black",
         margin: "40px",
+    }
+
+    const logout = () => {
+        localStorage.removeItem("whpf_user");
+        setLoggedOut(true);
+    };
+
+    if (loggedOut) {
+        return <Redirect to="/login" push={true} />
     }
 
     return (
@@ -31,24 +42,8 @@ export default function NavTag() {
                         <NavDropdown.Item eventKey="4.1"> <i className="fa fa-user fa-fw"></i> Profile</NavDropdown.Item>
                         <NavDropdown.Item eventKey="4.2"><i className="fa fa-envelope fa-fw"></i>  Message</NavDropdown.Item>
                         <NavDropdown.Divider />
-                        <NavDropdown.Item eventKey="4.3"><i className="fa fa-sign-out fa-fw"></i> Logout</NavDropdown.Item>
+                        <NavDropdown.Item eventKey="4.3" onClick={logout}><i className="fa fa-sign-out fa-fw"></i> Logout</NavDropdown.Item>
                     </NavDropdown>
-
-                    {/* <li className="dropdown">
-                        <a className="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i className="fa fa-user fa-fw"></i> <i className="fa fa-caret-down"></i>
-                        </a>
-                        <ul className="dropdown-menu dropdown-user">
-                            <li><a href="#"><i className="fa fa-user fa-fw"></i> User Profile</a>
-                            </li>
-                            <li><a href="#"><i className="fa fa-gear fa-fw"></i> Settings</a>
-                            </li>
-                            <li className="divider"></li>
-                            <li><a href="login.html"><i className="fa fa-sign-out fa-fw"></i> Logout</a>
-                            </li>
-                        </ul>
-                    </li> */}
-
                 </Nav>
             </Navbar>
 

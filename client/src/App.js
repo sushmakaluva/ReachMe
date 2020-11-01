@@ -7,7 +7,7 @@ import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
-import AddPost from './components/AddPost';
+import AddPost from './pages/AddPost';
 
 function App() {
 
