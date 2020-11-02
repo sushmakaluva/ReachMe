@@ -10,6 +10,7 @@ export default function NavTag() {
     const navStyle = {
         height: "70px",
         backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)",
+        marginBottom:"40px"
     }
 
     const navLinkStyle = {
@@ -34,7 +35,7 @@ export default function NavTag() {
                 </NavbarBrand>
                 <Nav className="ml-auto">
                     <Nav.Item className="text-center" style={navLinkStyle}>
-                        <Nav.Link href="/AddPost">
+                        <Nav.Link href="/addPost">
                             Add Post
                         </Nav.Link>
                     </Nav.Item>

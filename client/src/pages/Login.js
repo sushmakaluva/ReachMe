@@ -47,8 +47,9 @@ export default function Login(props) {
                     Log In
                 </Button>
             </Form>
+            <br />
             <hr />
-            <Button variant="success" onClick={props.handleOnClick} style={{ margin: "20px" }}>
+            <Button variant="success" onClick={props.handleOnClick} style={{ margin: "15px" }}>
                 Create new Account
           </Button>
         </div >

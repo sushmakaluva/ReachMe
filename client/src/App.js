@@ -36,11 +36,11 @@ function App() {
           <Route exact path={["/home", "/"]}>
             <Homepage />
           </Route>
-          <Route>
-            <NoMatch />
-          </Route>
           <Route exact path="/addPost">
             <AddPost />
+          </Route>
+          <Route>
+            <NoMatch />
           </Route>
         </Switch>
       </div >
