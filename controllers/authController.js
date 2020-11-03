@@ -6,18 +6,18 @@ module.exports = {
             .create(user)
     },
 
-    searchByEmail: function (inputEmail, inputPassword, callback) {
-        db.Users
+    searchByEmail: function (inputEmail, inputPassword) {
+        return db.Users
             .find({ email: inputEmail })
             .then(dbRes => {
                 if (dbRes.length === 0)
-                    callback(new Error("User not found"))
+                    throw new Error("User not found")
                 else if (dbRes.length === 1 && dbRes[0].password !== inputPassword)
-                    callback(new Error("Password incorrect"))
+                    throw new Error("Password incorrect")
                 else if (dbRes.length === 1 && dbRes[0].password === inputPassword)
-                    callback(null, dbRes)
+                    return Promise.resolve(dbRes)
             })
-            .catch(err => callback(err, null))
+
     },
 
     SearchFriends: function () {

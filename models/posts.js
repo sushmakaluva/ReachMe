@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const PostsSchema = new Schema({
   user_id: { type: mongoose.Schema.ObjectId, ref: 'Users', required: true },
-  image: { data: Buffer, contentType: String },
+  image: { data: Buffer, contentType: String, default: "https://i.stack.imgur.com/34AD2.jpg" },
   caption: { type: String, required: true },
   created_at: { type: Date, default: Date.now },
 })
