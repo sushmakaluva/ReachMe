@@ -10,4 +10,8 @@ export default {
     userSignup: function (signupData) {
         return axios.post("/api/signup", signupData);
     },
+    // add post data to db
+    addPost:function(postData){
+        return axios.post("/api/posts",postData);
+    }
 };

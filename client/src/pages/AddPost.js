@@ -33,14 +33,14 @@ export default function AddPost() {
                             <Form.Label>What's on your mind ?</Form.Label>
                             <Form.Control as="textarea" rows={5} />
                         </Form.Group>
-                        <Button onClick={onButtonClick}>Add Emoji</Button>
+                        <Button onClick={onButtonClick}>Emoji</Button>
                             {emojiShow ? <Emoji /> : null}
                         <br />
                         <Form.Group>
                             <Form.File id="exampleFormControlFile1" label="Upload Image :" style={imgStyle} className="text-left" />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
+                        <Button variant="success" type="submit">
+                            Add Post
                         </Button>
                     </Form>
                 </Jumbotron>

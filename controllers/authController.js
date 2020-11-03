@@ -1,11 +1,9 @@
 const db = require("../models");
 
 module.exports = {
-    create: function (user, callback) {
-        db.Users
+    create: function (user) {
+        return db.Users
             .create(user)
-            .then(dbRes => callback(null, dbRes))
-            .catch(err => callback(err, null))
     },
 
     searchByEmail: function (inputEmail, inputPassword, callback) {
@@ -20,5 +18,11 @@ module.exports = {
                     callback(null, dbRes)
             })
             .catch(err => callback(err, null))
+    },
+
+    SearchFriends: function () {
+        return db.Users.find({})
+        // .populate(‘friends’, [‘fullname’, ‘username’], { limit: 10 })
+        // .exec()
     }
 }
