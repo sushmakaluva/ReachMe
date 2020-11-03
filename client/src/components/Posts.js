@@ -27,4 +27,6 @@ export default function Posts() {
     )
 }
 
-export default post
+  
+
+export default Posts;
