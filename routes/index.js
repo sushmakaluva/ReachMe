@@ -12,7 +12,7 @@ module.exports = function (router) {
 
     router.post('/api/login', function (req, res) {
         authController.searchByEmail(req.body.email, req.body.password)
-            .then(dbUsers => res.status(200).json({ "message": "Authentication successful" }))
+            .then(dbUsers => res.status(200).json(dbUsers[0]))
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
@@ -34,10 +34,13 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    router.post('/api/comments', function (req, res) {
-        commentController.create(req.body)
+    router.post('/api/post/:post_id/comment', function (req, res) {
+        console.log(req.params.post_id, req.body.user_id, req.body.comment)
+        commentController.create(req.params.post_id, req.body.user_id, req.body.comment)
             .then(dbCommentsData => res.status(200).json(dbCommentsData))
-            .catch(err => res.status(400).json({ error: err.message }))
+            .catch(err => {
+                res.status(400).json({ error: err.message })
+            })
     })
 
     router.get('/api/post/:post_id/comments', function (req, res) {

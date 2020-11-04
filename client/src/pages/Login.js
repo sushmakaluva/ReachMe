@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import API from "../utils/API";
+import session from "../utils/session";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import SignupModal from './Modal';
 // import { createBrowserHistory as history } from 'history';
@@ -25,6 +26,7 @@ export default function Login(props) {
             password: formObject.password
         })
             .then(function (response) {
+                session.set(response.data);
                 window.location.href = "/home"
             })
             .catch(e => {

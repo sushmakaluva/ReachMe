@@ -5,11 +5,11 @@ module.exports = {
         return db.Posts
             .create(post)
     },
-    
-    displayPosts:function () {
+
+    displayPosts: function () {
         return db.Posts
             .find({})
-            // .populate('creator', ['fullname', 'username'])
-            
+            .populate('user_id', ['first_name', 'last_name'], db.Users)
+
     },
 }
