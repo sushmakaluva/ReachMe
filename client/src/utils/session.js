@@ -5,7 +5,7 @@ export default {
     },
 
     get: function () {
-        return JSON.parse(localStorage.getItem('user_session')) || {};
+        return JSON.parse(localStorage.getItem('user_session'));
     },
 
     delete: function () {

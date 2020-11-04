@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import API from '../utils/API';
 import { InputGroup, FormControl, Button, Form } from 'react-bootstrap';
 import session from "../utils/session";
 
 export default function Comments(props) {
+    const commentRef = useRef();
     const [comments, setComments] = useState([]);
     const [formObject, setFormObject] = useState({
-        caption: ""
     })
 
     function handleInputChange(event) {
@@ -25,32 +25,38 @@ export default function Comments(props) {
             .catch(err => console.log(err));
     }
 
-    // TODO : clear comment field after submitting
     const handleOnSubmit = (postId) => e => {
         e.preventDefault();
         API.addComment(formObject.comment, postId, session.get()._id)
             .catch(e => alert(e.error))
             .then(r => loadComments(postId))
             .catch(e => alert(e.error));
-
+            commentRef.current.value = ""
     }
 
     return (
         <div>
-            <Form onSubmit={handleOnSubmit(props.postId)}>
+            {
+                comments.map(userComment =>
+                    <li style={{listStyleType: "none",textAlign:"left",padding:"5px"}}>
+                    <span style={{fontWeight:"bold",padding:"5px"}}>{userComment.user_id.first_name+" "+userComment.user_id.last_name}</span>
+                    <span>{userComment.comment}</span>
+                    <span> { (userComment.user_id._id===session.get()._id) ? 
+                    <button type="button" class="close" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                    </button>:""}</span> 
+                    </li>
+                )
+            }
+            <Form style={{margin:"5px"}} onSubmit={handleOnSubmit(props.postId)}>
                 <InputGroup className="mb-3 col-sm">
-                    <FormControl type="text" name="comment" onChange={handleInputChange}
-                        placeholder="Type in your comment ..." />
+                    <FormControl type="text" name="comment" ref={commentRef} onChange={handleInputChange}
+                        placeholder="Add a comment..." />
                     <InputGroup.Append>
-                        <Button variant="outline-secondary" type="submit">Enter</Button>
+                        <Button variant="outline-secondary" type="submit">Post</Button>
                     </InputGroup.Append>
                 </InputGroup>
             </Form>
-            {
-                comments.map(userComment =>
-                    <li>{userComment.user_id.first_name} : {userComment.comment}</li>
-                )
-            }
         </div>
     )
 }

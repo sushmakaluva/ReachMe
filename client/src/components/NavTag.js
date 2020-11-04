@@ -29,7 +29,7 @@ export default function NavTag() {
     }
 
     const getUserName = function () {
-        return session.get().first_name;
+        return session.get().first_name+" "+session.get().last_name;
     }
 
     return (

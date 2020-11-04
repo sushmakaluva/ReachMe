@@ -24,10 +24,12 @@ export default function Posts() {
             { posts.length ?
                 (posts.map(post =>
                     <Container style={{ width: "600px", marginBottom: "30px" }}>
-                        <p>UserName:{post.user_id && post.user_id.first_name}</p>
+                      
                         <Card>
+                          <p style={{textAlign:"left",padding:"5px",margin:"5px",fontWeight:"bold"}} >{post.user_id && post.user_id.first_name+" "+post.user_id.last_name}</p>
                             <img src={post.image} alt="profile-pic" />
-                            <p>Caption: {post.caption}</p>
+                            <p style={{textAlign:"left",padding:"5px"}}><span style={{fontWeight:"bold"}}>{post.user_id && post.user_id.first_name+" "+post.user_id.last_name}</span>   <span>  {post.caption}</span></p>
+                            <p style={{textDecoration: "underline",textAlign:"left",marginLeft:"5px",color:"grey"}}>Comments</p>
                             <Comments postId={post._id} />
                         </Card>
                     </Container>
