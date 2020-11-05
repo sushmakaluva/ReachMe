@@ -16,7 +16,7 @@ export default function Comments(props) {
 
     useEffect(() => {
         loadComments(props.postId)
-    }, [])
+    },)
 
     // loads all the posts
     function loadComments(postId) {
@@ -28,10 +28,15 @@ export default function Comments(props) {
     const handleOnSubmit = (postId) => e => {
         e.preventDefault();
         API.addComment(formObject.comment, postId, session.get()._id)
-            .catch(e => alert(e.error))
             .then(r => loadComments(postId))
             .catch(e => alert(e.error));
             commentRef.current.value = ""
+    }
+
+    function deleteCommentonClick(commentId, postId) {
+        API.deleteComment(commentId)
+        .then(res => loadComments(postId))
+        .catch(err => console.log(err));
     }
 
     return (
@@ -42,7 +47,7 @@ export default function Comments(props) {
                     <span style={{fontWeight:"bold",padding:"5px"}}>{userComment.user_id.first_name+" "+userComment.user_id.last_name}</span>
                     <span>{userComment.comment}</span>
                     <span> { (userComment.user_id._id===session.get()._id) ? 
-                    <button type="button" class="close" aria-label="Close">
+                    <button type="button" className="close" aria-label="Close" onClick={() => deleteCommentonClick(userComment._id,userComment.post_id)}>
                      <span aria-hidden="true">&times;</span>
                     </button>:""}</span> 
                     </li>

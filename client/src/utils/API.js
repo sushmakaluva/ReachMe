@@ -28,6 +28,10 @@ export default {
     // get all comments
     getComments: function (post_id) {
         return axios.get(`/api/post/${post_id}/comments`);
-    }
+    },
 
+    // delete comment
+    deleteComment: function(comment_id) {
+    return axios.delete(`/api/comments/${comment_id}` );
+  },
 };

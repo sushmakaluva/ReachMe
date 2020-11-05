@@ -12,4 +12,9 @@ module.exports = {
             .populate('user_id', ['first_name', 'last_name'], db.Users)
     },
 
+    DeleteByCommentId:function (comment_id) {
+        return db.Comments
+            .deleteOne({ _id: comment_id })
+    },
+
 }
