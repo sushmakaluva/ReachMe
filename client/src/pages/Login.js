@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import API from "../utils/API";
+import session from "../utils/session";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import SignupModal from './Modal';
 // import { createBrowserHistory as history } from 'history';
@@ -25,6 +26,7 @@ export default function Login(props) {
             password: formObject.password
         })
             .then(function (response) {
+                session.set(response.data);
                 window.location.href = "/home"
             })
             .catch(e => {
@@ -37,7 +39,7 @@ export default function Login(props) {
             <Form onSubmit={manageOnSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name="email" placeholder="Enter email" onChange={handleInputChange} />
+                    <Form.Control type="email" name="email" placeholder="Enter email" autoComplete="on" onChange={handleInputChange} />
                 </Form.Group>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>Enter Password</Form.Label>
@@ -47,8 +49,9 @@ export default function Login(props) {
                     Log In
                 </Button>
             </Form>
+            <br />
             <hr />
-            <Button variant="success" onClick={props.handleOnClick} style={{ margin: "20px" }}>
+            <Button variant="success" onClick={props.handleOnClick} style={{ margin: "15px" }}>
                 Create new Account
           </Button>
         </div >

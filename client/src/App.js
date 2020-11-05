@@ -7,6 +7,7 @@ import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
+import AddPost from './pages/AddPost';
 
 function App() {
 
@@ -32,8 +33,11 @@ function App() {
               </Jumbotron>
             </Container>
           </Route>
-          <Route exact path={["/home","/"]}>
+          <Route exact path={["/home", "/"]}>
             <Homepage />
+          </Route>
+          <Route exact path="/addPost">
+            <AddPost />
           </Route>
           <Route>
             <NoMatch />

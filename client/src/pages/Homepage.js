@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
+import NavTag from '../components/NavTag';
 import Posts from '../components/Posts';
 
 export default function Homepage() {
 
     return (
         <div>
-            <NavBar />
+            <NavTag />
             <Posts />
         </div>
     )
