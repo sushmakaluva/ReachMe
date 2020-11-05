@@ -12,7 +12,7 @@ export default function NavTag() {
     const navStyle = {
         height: "70px",
         backgroundImage: "linear-gradient(to right, #434343 0%, black 100%)",
-        marginBottom: "40px"
+        marginBottom: "40px",
     }
 
     const navLinkStyle = {
@@ -36,7 +36,7 @@ export default function NavTag() {
 
     return (
         <div>
-            <Navbar style={navStyle}>
+            <Navbar style={navStyle} className="fixed-top">
                 <NavbarBrand className="navbar-brand" activekey="/home">
                     <Nav.Link href="/home" ><img src={logo} alt="logo" /></Nav.Link>
                 </NavbarBrand>
