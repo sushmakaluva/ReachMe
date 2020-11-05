@@ -35,7 +35,7 @@
     "firebase": "^8.0.0",
     "font-awesome": "^4.7.0",
     "if-env": "^1.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "mongoose": "^5.10.10",
     "path": "^0.12.7",
     "react-bootstrap": "^1.4.0",
