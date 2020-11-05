@@ -1,7 +1,6 @@
 import React from 'react';
 import NavBar from '../components/NavBar';
-import Posts from '../components/Posts';
-import utils from "../profilepage.css";
+import "../profilepage.css";
 
 
 export default function ProfilePage() {
