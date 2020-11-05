@@ -30,7 +30,7 @@ export default function ProfilePage() {
                 <p><span className="profile-real-name">Profile Name</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit 📷✈️🏕️</p>
               </div>
             </div>
-            {/* End of profile section */}
+          
           </div>
         </header>
         <main>
@@ -53,20 +53,6 @@ export default function ProfilePage() {
                   <ul>
                     <li className="gallery-item-likes"><span className="visually-hidden">Likes:</span><i className="fas fa-heart" aria-hidden="true" /> 89</li>
                     <li className="gallery-item-comments"><span className="visually-hidden">Comments:</span><i className="fas fa-comment" aria-hidden="true" /> 5</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="gallery-item" tabIndex={0}>
-                <img src="" className="gallery-image" alt="" />
-                <div className="gallery-item-type">
-                  <span className="visually-hidden">Gallery</span><i className="fas fa-clone" aria-hidden="true" />
-                </div>
-                
-                <div className="gallery-item-info">
-                  <ul>
-                    <li className="gallery-item-likes"><span className="visually-hidden">Likes:</span><i className="fas fa-heart" aria-hidden="true" /> 42</li>
-                    <li className="gallery-item-comments"><span className="visually-hidden">Comments:</span><i className="fas fa-comment" aria-hidden="true" /> 1</li>
                   </ul>
                 </div>
               </div>
