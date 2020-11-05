@@ -4,19 +4,21 @@ import { Nav, NavDropdown, NavbarBrand, Navbar } from 'react-bootstrap';
 import logo from "../reachme_logo.png";
 import 'font-awesome/css/font-awesome.min.css';
 import session from "../utils/session";
+import "../navbar.css";
 
 export default function NavTag() {
     const [loggedOut, setLoggedOut] = useState(false);
 
     const navStyle = {
         height: "70px",
-        backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)",
+        backgroundImage: "linear-gradient(to right, #434343 0%, black 100%)",
         marginBottom: "40px"
     }
 
     const navLinkStyle = {
-        color: "black",
+        color: "white",
         margin: "40px",
+        fontWeight:"bold"
     }
 
     const logout = () => {
@@ -39,8 +41,8 @@ export default function NavTag() {
                     <Nav.Link href="/home" ><img src={logo} alt="logo" /></Nav.Link>
                 </NavbarBrand>
                 <Nav className="ml-auto">
-                    <Nav.Item className="text-center" style={navLinkStyle}>
-                        <Nav.Link href="/addPost">
+                    <Nav.Item className="text-center" >
+                        <Nav.Link href="/addPost" style={navLinkStyle}>
                             Add Post
                         </Nav.Link>
                     </Nav.Item>
