@@ -40,7 +40,7 @@ export default function Posts() {
         width: "auto",
         maxWidth: "500px",
         height: "auto",
-        maxHeight: "500px",
+        maxHeight: "500px"
     }
 
     return (
@@ -52,8 +52,8 @@ export default function Posts() {
                             <p style={nameStyle}>
                                 {post.user_id && post.user_id.first_name + " " + post.user_id.last_name}
                             </p>
-                            <img src={post.image} alt="profile-pic" style={imgStyle} className=
-                            "img-responsive"/>
+
+                            <img src={post.image} alt="profile-pic" style={imgStyle} />
                             <p style={{ textAlign: "left", padding: "5px" }}>
                                 <span style={{ fontWeight: "bold" }}>{post.user_id && post.user_id.first_name + " " + post.user_id.last_name}</span>
                                 <span>  {post.caption}</span>
