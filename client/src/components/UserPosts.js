@@ -7,9 +7,11 @@ import UserPostModal from "./UserPostModal";
 export default function UserPosts(props) {
 
   const [modalShow, setModalShow] = useState(false);
-  // const [postDetails,setPostDetails]=useState("");
+  const [postDetails, setPostDetails] = useState({});
 
-  const handleOnClick = () => {
+  const handleOnClick = (post) => {
+    console.log(post, "8****")
+    setPostDetails(post);
     setModalShow(true);
   }
 
@@ -34,7 +36,7 @@ export default function UserPosts(props) {
       <Row >
         {props.posts.map(post =>
           <Col className="col-lg-4 col-md-6 col-sm-12 col-12">
-            <Card style={cardStyle} onClick={handleOnClick}>
+            <Card style={cardStyle} onClick={() => handleOnClick(post)}>
               <img src={post.image} alt="profile-pic" style={imgStyle} />
               <p style={{ textAlign: "left", padding: "5px" }}>
                 <span style={{ fontWeight: "bold" }}>{session.getUserName()}</span>
@@ -47,7 +49,7 @@ export default function UserPosts(props) {
       <UserPostModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        postId={post._id}
+        postData={postDetails}
       />
     </div>
   )

@@ -38,6 +38,13 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
+    // delete post
+    router.delete('/api/post/:post_id', function (req, res) {
+        postController.deletePost(req.params.post_id)
+            .then(postsAll => res.status(200).json({ message: "deleted post" }))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
+
     // add comment
     router.post('/api/post/:post_id/comment', function (req, res) {
         console.log(req.params.post_id, req.body.user_id, req.body.comment)

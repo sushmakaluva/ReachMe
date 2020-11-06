@@ -3,7 +3,7 @@ import API from '../utils/API';
 import { Card, Container } from 'react-bootstrap';
 import Comments from './Comments';
 
-export default function Posts() {
+export default function Posts(props) {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {

@@ -38,5 +38,10 @@ export default {
     // get all posts of a user
     userPosts: function (user_id) {
         return axios.get(`/api/posts/${user_id}`);
+    },
+
+    // delete user post
+    deletePost:function(post_id){
+        return axios.delete(`/api/post/${post_id}`);
     }
 };
