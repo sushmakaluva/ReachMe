@@ -14,12 +14,12 @@ export default function AddPost() {
         marginTop: "150px"
     }
 
-    const imgStyle = {
-        margin: "auto",
-        height: "300px",
-        width: "300px",
-        float: "left"
-    }
+    // const imgStyle = {
+    //     margin: "auto",
+    //     height: "300px",
+    //     width: "300px",
+    //     float: "left"
+    // }
 
     // const [emojiShow, setEmojiShow] = useState(false);
     const [formObject, setFormObject] = useState({
@@ -35,7 +35,9 @@ export default function AddPost() {
             console.error(`not an image, the image file is a ${typeof (formObject.imageAsFile)}`)
         }
 
-        const uploadTask = storage.ref(`/images/${formObject.imageAsFile.name}`).put(formObject.imageAsFile)
+        console.log("*******", formObject.imageAsFile, formObject.imageAsFile.length)
+
+        const uploadTask = storage.ref(`/images/${formObject.imageAsFile.name}`).put(formObject.imageAsFile);
 
         // initiates the firebase side uploading
         uploadTask.on('state_changed',
@@ -73,49 +75,48 @@ export default function AddPost() {
         const image = event.target.files[0]
         let reader = new FileReader();
         reader.onloadend = () => {
-            setFormObject({ ...formObject, imageAsFile: image })
-            setFormObject({ ...formObject, imageUpload: reader.result })
-        }
-        reader.readAsDataURL(image)
+            setFormObject({ ...formObject,imageUpload: reader.result, imageAsFile: image  })
     }
+    reader.readAsDataURL(image)
+}
 
-    // function onButtonClick() {
-    //     setEmojiShow(true);
-    // }
+// function onButtonClick() {
+//     setEmojiShow(true);
+// }
 
-    return (
-        <div>
-            <NavTag />
-            <Container style={containerStyle}>
-                <Jumbotron>
-                    <h4 className="text-center">Create Post</h4>
-                    <hr />
-                    <Form onSubmit={handleOnSubmit}>
-                        <Form.Group controlId="exampleForm.ControlTextarea1">
-                            <Form.Label style={{ float: "left", fontWeight: "bold" }}>What's on your mind ?</Form.Label>
-                            <Form.Control type="text" name="caption" as="textarea" rows={5} onChange={handleInputChange} />
-                        </Form.Group>
-                        {/* <Button onClick={onButtonClick}>Emoji</Button>
+return (
+    <div>
+        <NavTag />
+        <Container style={containerStyle}>
+            <Jumbotron>
+                <h4 className="text-center">Create Post</h4>
+                <hr />
+                <Form onSubmit={handleOnSubmit}>
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                        <Form.Label style={{ float: "left", fontWeight: "bold" }}>What's on your mind ?</Form.Label>
+                        <Form.Control type="text" name="caption" as="textarea" rows={5} onChange={handleInputChange} />
+                    </Form.Group>
+                    {/* <Button onClick={onButtonClick}>Emoji</Button>
                         {emojiShow ? <Emoji /> : null} */}
-                        <br />
-                        <span>
-                            <label style={{ float: "left", fontWeight: "bold", }}>
-                                Upload your Image :
+                    <br />
+                    <span>
+                        <label style={{ float: "left", fontWeight: "bold", }}>
+                            Upload your Image :
                           </label>
-                            {(formObject.imageUpload) ?
-                                <Card><img src={formObject.imageUpload} alt="post-pic" style={{ height: "100%", width: "100%", float: "left" }} /></Card>
-                                : " "}
-                        </span>
-                        <span >
-                            <input onChange={handleImageAsFile} type="file" style={{ float: "left" }} />
-                        </span>
-                        <br />
-                        <Button variant="dark" type="submit" style={{ marginRight: "200px", marginTop: "20px" }}>
-                            Add Post
+                        {(formObject.imageUpload) ?
+                            <Card><img src={formObject.imageUpload} alt="post-pic" style={{ height: "100%", width: "100%", float: "left" }} /></Card>
+                            : " "}
+                    </span>
+                    <span >
+                        <input onChange={handleImageAsFile} type="file" style={{ float: "left" }} />
+                    </span>
+                    <br />
+                    <Button variant="dark" type="submit" style={{ marginRight: "200px", marginTop: "20px" }}>
+                        Add Post
                         </Button>
-                    </Form>
-                </Jumbotron>
-            </Container>
-        </div>
-    )
+                </Form>
+            </Jumbotron>
+        </Container>
+    </div>
+)
 }

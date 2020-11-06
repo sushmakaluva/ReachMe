@@ -45,11 +45,10 @@ export default function Login(props) {
                     <Form.Label>Enter Password</Form.Label>
                     <Form.Control type="password" name="password" placeholder="Password" onChange={handleInputChange} />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="dark" type="submit">
                     Log In
                 </Button>
             </Form>
-            <br />
             <hr />
             <Button variant="success" onClick={props.handleOnClick} style={{ margin: "15px" }}>
                 Create new Account
