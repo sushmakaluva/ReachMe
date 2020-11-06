@@ -7,6 +7,7 @@ import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
+import ProfilePage from './pages/ProfilePage';
 import AddPost from './pages/AddPost';
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route exact path={["/home", "/"]}>
             <Homepage />
+          </Route>
+          <Route exact path={["/profile"]}>
+            <ProfilePage />
           </Route>
           <Route exact path="/addPost">
             <AddPost />

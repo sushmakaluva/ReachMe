@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
+import NavTag from '../components/NavTag';
 
 export default function ProfilePage() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <NavTag />
+    
   )
 }
