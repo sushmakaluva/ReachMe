@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
-import { Card, Container } from 'react-bootstrap';
+import { Card, Container, Button } from 'react-bootstrap';
 import Comments from './Comments';
 
 export default function Posts(props) {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+    const [likeCount, setLikeCount] = useState(0);
 
     useEffect(() => {
         loadPosts()
@@ -17,6 +18,9 @@ export default function Posts(props) {
                 setPosts(res.data)
             )
             .catch(err => console.log(err));
+    }
+    const incrementMe = () => {
+        setLikeCount(likeCount + 1);
     }
 
     const containerStyle = {
@@ -54,10 +58,11 @@ export default function Posts(props) {
                             </p>
 
                             <img src={post.image} alt="profile-pic" style={imgStyle} />
-                            <p style={{ textAlign: "left", padding: "5px" }}>
+                            <p style={{ textAlign: "left", padding: "5px",}}>
                                 <span style={{ fontWeight: "bold" }}>{post.user_id && post.user_id.first_name + " " + post.user_id.last_name}</span>
                                 <span>  {post.caption}</span>
                             </p>
+                            <Button size="sm" variant="danger" onClick={incrementMe} style={{ borderRadius: "20px", width: "50px", height: "30px",margin:"5px",marginBottom:"20px" }}> <i class="heart fa fa-heart-o"></i>{likeCount}</Button>
                             <p style={{
                                 textDecoration: "underline", textAlign: "left",
                                 marginLeft: "5px", color: "grey"

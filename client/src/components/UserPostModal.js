@@ -32,6 +32,7 @@ export default function UserPostModal(props) {
     API.deletePost(postId)
       .then(res => console.log(res))
       .catch(err => console.log(err));
+    
   }
 
   return (
@@ -64,9 +65,9 @@ export default function UserPostModal(props) {
             marginLeft: "5px", color: "grey"
           }}>Comments
           </p>
-          {/* <Comments postId={props.postData._id} /> */}
+          <Comments postId={props.postData._id} />
         </Card>
-        <Button variant="secondary" onClick={() => handleOnDelete(props.postData._id)}>Delete Post</Button>
+        <Button variant="secondary" onClick={() => handleOnDelete(props.postData._id)} >Delete Post</Button>
       </Modal.Body>
     </Modal>
   );

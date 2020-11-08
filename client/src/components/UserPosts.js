@@ -1,4 +1,3 @@
-import { post } from 'jquery';
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
 import session from "../utils/session";
