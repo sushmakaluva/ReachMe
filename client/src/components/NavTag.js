@@ -11,12 +11,12 @@ export default function NavTag() {
 
     const navStyle = {
         height: "70px",
-        backgroundImage: "linear-gradient(to right, #434343 0%, black 100%)",
+        backgroundColor:"white",
         marginBottom: "40px",
     }
 
     const navLinkStyle = {
-        color: "white",
+        color: "black",
         margin: "40px",
         fontWeight:"bold"
     }
