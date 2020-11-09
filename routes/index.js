@@ -1,6 +1,7 @@
 const authController = require('../controllers/authController.js');
 const postController = require('../controllers/postController.js');
 const commentController = require('../controllers/commentController.js');
+const profileController = require('../controllers/profileController.js');
 const path = require("path");
 
 module.exports = function (router) {
@@ -10,7 +11,7 @@ module.exports = function (router) {
             .then(dbUser => res.status(200).json(dbUser))
             .catch(err => res.status(400).json({ error: err.message }))
     })
-     // user login
+    // user login
     router.post('/api/login', function (req, res) {
         authController.searchByEmail(req.body.email, req.body.password)
             .then(dbUsers => res.status(200).json(dbUsers[0]))
@@ -23,17 +24,24 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-   //  add post
+    //  add post
     router.post('/api/posts', function (req, res) {
         postController.create(req.body)
             .then(dbPostData => res.status(200).json(dbPostData))
             .catch(err => res.status(400).json({ error: err.message }))
     })
-       
+
     //get posts
     router.get('/api/posts', function (req, res) {
         postController.displayPosts()
             .then(postsAll => res.status(200).json(postsAll))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
+
+    // delete post
+    router.delete('/api/post/:post_id', function (req, res) {
+        postController.deletePost(req.params.post_id)
+            .then(postsAll => res.status(200).json({ message: "deleted post" }))
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
@@ -55,11 +63,19 @@ module.exports = function (router) {
     })
 
     // delete comment
-    router.delete('/api/comments/:comment_id',function (req, res) {
-commentController.DeleteByCommentId(req.params.comment_id)
-.then(commentsAll => res.status(200).json({message:"deleted comment"}))
- .catch(err => res.status(400).json({ error: err.message }))
+    router.delete('/api/comments/:comment_id', function (req, res) {
+        commentController.DeleteByCommentId(req.params.comment_id)
+            .then(commentsAll => res.status(200).json({ message: "deleted comment" }))
+            .catch(err => res.status(400).json({ error: err.message }))
     })
+
+    // profile page - display posts of user
+    router.get('/api/posts/:user_id', function (req, res) {
+        profileController.displayPostsByUserId(req.params.user_id)
+            .then(userPosts => res.status(200).json(userPosts))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
+
 
     // If no API routes are hit, send the React app
     // router.all('*', function (req, res) {

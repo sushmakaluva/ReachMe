@@ -12,4 +12,9 @@ module.exports = {
             .populate('user_id', ['first_name', 'last_name'], db.Users)
 
     },
+
+    deletePost: function(post_id){
+        return db.Posts
+        .deleteOne({ _id: post_id })
+    }
 }

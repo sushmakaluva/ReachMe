@@ -36,7 +36,7 @@ export default function Login(props) {
 
     return (
         <div>
-            <Form onSubmit={manageOnSubmit}>
+            <Form onSubmit={manageOnSubmit} >
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" autoComplete="on" onChange={handleInputChange} />

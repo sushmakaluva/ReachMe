@@ -10,6 +10,10 @@ export default {
 
     delete: function () {
         localStorage.removeItem('user_session');
-    }
+    },
+
+    getUserName:function () {
+        return this.get().first_name + " " + this.get().last_name;
+      }
 
 }

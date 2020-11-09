@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Login from './pages/Login';
 import logo from './logo/reachme_logo.png';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -7,11 +7,11 @@ import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
+import ProfilePage from './pages/ProfilePage';
 import AddPost from './pages/AddPost';
 
 function App() {
-
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handleOnClick = (e) => {
     e.preventDefault();
@@ -35,6 +35,9 @@ function App() {
           </Route>
           <Route exact path={["/home", "/"]}>
             <Homepage />
+          </Route>
+          <Route exact path="/profile">
+            <ProfilePage />
           </Route>
           <Route exact path="/addPost">
             <AddPost />
