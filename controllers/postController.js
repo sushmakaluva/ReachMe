@@ -25,4 +25,10 @@ module.exports = {
             .populate('user_id', ['first_name', 'last_name'], db.Users)
             .sort({ created_at: 'descending' })
     },
+
+    getUserName:function (user_id) {
+        return db.Users
+            .find({_id: user_id })
+    },
+
 }

@@ -18,6 +18,7 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
+    // get friends
     router.get('/api/friends', function (req, res) {
         authController.SearchFriends()
             .then(friendsAll => res.status(200).json(friendsAll))
@@ -76,8 +77,12 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    // display profile page of other users on clicking their username
-
+    // get username by sending user_id
+    router.get('/api/user/:user_id', function (req, res) {
+        postController.getUserName(req.params.user_id)
+            .then(userNames => res.status(200).json(userNames))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
 
     // If no API routes are hit, send the React app
     // router.all('*', function (req, res) {
