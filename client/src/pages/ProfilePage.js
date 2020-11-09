@@ -9,11 +9,12 @@ export default function ProfilePage() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    loadPosts(session.get()._id)
+    loadPosts()
   }, [])
 
   // loads all the posts of a particular user
-  function loadPosts(user_id) {
+  function loadPosts() {
+    const user_id = session.get()._id
     API.userPosts(user_id)
       .then(res =>
         setPosts(res.data)
@@ -25,7 +26,7 @@ export default function ProfilePage() {
     <div>
       <NavTag />
       <h3 style={{ margin: "100px" }}>{session.getUserName()}</h3>
-      <UserPosts posts={posts} />
+      <UserPosts posts={posts} loadPosts={loadPosts}/>
     </div>
 
   )

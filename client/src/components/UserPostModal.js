@@ -30,9 +30,12 @@ export default function UserPostModal(props) {
   }
   const handleOnDelete = (postId) => {
     API.deletePost(postId)
-      .then(res => console.log(res))
+      .then(res => {
+        props.setModalShow(false)
+        props.loadPosts();
+      })
       .catch(err => console.log(err));
-    
+
   }
 
   return (

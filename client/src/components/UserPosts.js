@@ -47,8 +47,10 @@ export default function UserPosts(props) {
       </Row>
       <UserPostModal
         show={modalShow}
+        setModalShow={setModalShow}
         onHide={() => setModalShow(false)}
         postData={postDetails}
+        loadPosts={props.loadPosts}
       />
     </div>
   )
