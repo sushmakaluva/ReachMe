@@ -18,9 +18,6 @@ export default function UserPostModal(props) {
     margin: "auto",
     marginBottom: "20px",
   }
-  const nameStyle = {
-    fontWeight: "bold", margin: "5px"
-  }
 
   const imgStyle = {
     width: "auto",

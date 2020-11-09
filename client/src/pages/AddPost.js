@@ -104,7 +104,7 @@ return (
                             Upload your Image :
                           </label>
                         {(formObject.imageUpload) ?
-                            <Card><img src={formObject.imageUpload} alt="post-pic" style={{ height: "100%", width: "100%", float: "left" }} /></Card>
+                            <Card style={{width:"300px"}}><img src={formObject.imageUpload} alt="post-pic" style={{ height: "100%",maxHeight:"300px", width: "100%",maxWidth:"300px", float: "left" }} /></Card>
                             : " "}
                     </span>
                     <span >

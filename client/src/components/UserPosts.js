@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
-import session from "../utils/session";
 import UserPostModal from "./UserPostModal";
 
 export default function UserPosts(props) {

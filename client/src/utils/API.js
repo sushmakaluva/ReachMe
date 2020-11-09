@@ -43,5 +43,10 @@ export default {
     // delete user post
     deletePost: function (post_id) {
         return axios.delete(`/api/post/${post_id}`);
+    },
+
+    // get username from user_id
+    getUserNameFromId:function (user_id) {
+        return axios.get(`/api/user/${user_id}`);
     }
 };
