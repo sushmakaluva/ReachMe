@@ -1,8 +1,8 @@
+const path = require("path");
+
 const authController = require('../controllers/authController.js');
 const postController = require('../controllers/postController.js');
 const commentController = require('../controllers/commentController.js');
-const profileController = require('../controllers/profileController.js');
-const path = require("path");
 
 module.exports = function (router) {
     // user sign-up
@@ -70,11 +70,13 @@ module.exports = function (router) {
     })
 
     // profile page - display posts of user
-    router.get('/api/posts/:user_id', function (req, res) {
-        profileController.displayPostsByUserId(req.params.user_id)
+    router.get('/api/user/:user_id/posts', function (req, res) {
+        postController.displayPostsByUserId(req.params.user_id)
             .then(userPosts => res.status(200).json(userPosts))
             .catch(err => res.status(400).json({ error: err.message }))
     })
+
+    // display profile page of other users on clicking their username
 
 
     // If no API routes are hit, send the React app

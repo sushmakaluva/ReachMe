@@ -47,7 +47,7 @@ export default function NavTag() {
                         </Nav.Link>
                     </Nav.Item>
                     <NavDropdown title={getUserName()} id="nav-dropdown" style={navLinkStyle}>
-                        <NavDropdown.Item href="/profile" eventKey="4.1"> <i className="fa fa-user fa-fw"></i> Profile</NavDropdown.Item>
+                        <NavDropdown.Item href={`/profile/${session.get()._id}`} eventKey="4.1"> <i className="fa fa-user fa-fw"></i> Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/followers" eventKey="4.1"> <i className="fa fa-users fa-fw"></i> Followers</NavDropdown.Item>
                         <NavDropdown.Item eventKey="4.2"><i className="fa fa-envelope fa-fw"></i>  Message</NavDropdown.Item>
                         <NavDropdown.Divider />

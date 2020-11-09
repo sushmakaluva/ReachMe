@@ -53,16 +53,16 @@ export default function Posts(props) {
                 (posts.map(post =>
                     <Container style={containerStyle}>
                         <Card style={cardStyle}>
-                            <p style={nameStyle}>
+                            <a href={`/profile/${post.user_id._id}`} style={nameStyle} >
                                 {post.user_id && post.user_id.first_name + " " + post.user_id.last_name}
-                            </p>
+                            </a>
 
                             <img src={post.image} alt="profile-pic" style={imgStyle} />
-                            <p style={{ textAlign: "left", padding: "5px",}}>
+                            <p style={{ textAlign: "left", padding: "5px", }}>
                                 <span style={{ fontWeight: "bold" }}>{post.user_id && post.user_id.first_name + " " + post.user_id.last_name}</span>
                                 <span>  {post.caption}</span>
                             </p>
-                            <Button size="sm" variant="danger" onClick={incrementMe} style={{ borderRadius: "20px", width: "50px", height: "30px",margin:"5px",marginBottom:"20px" }}> <i class="heart fa fa-heart-o"></i>{likeCount}</Button>
+                            <Button size="sm" variant="danger" onClick={incrementMe} style={{ borderRadius: "20px", width: "50px", height: "30px", margin: "5px", marginBottom: "20px" }}> <i class="heart fa fa-heart-o"></i>{likeCount}</Button>
                             <p style={{
                                 textDecoration: "underline", textAlign: "left",
                                 marginLeft: "5px", color: "grey"
@@ -74,6 +74,6 @@ export default function Posts(props) {
                 )
                 ) : (<h3>No Posts to Display</h3>)
             }
-        </div>
+        </div >
     )
 }
