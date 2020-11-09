@@ -38,6 +38,10 @@ export default function UserPostModal(props) {
 
   }
 
+  const getUserName = (postData) => {
+    return (postData.user_id && postData.user_id.first_name) + " " + (postData.user_id && postData.user_id.last_name)
+  }
+
   return (
     <Modal
       {...props}
@@ -49,18 +53,14 @@ export default function UserPostModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          {session.getUserName()}
+          {getUserName(props.postData)}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Card style={cardStyle}>
-          <p style={nameStyle}>
-            {props.postData.user_id && session.getUserName()}
-          </p>
-
           <img src={props.postData.image} alt="profile-pic" style={imgStyle} />
           <p style={{ textAlign: "left", padding: "5px" }}>
-            <span style={{ fontWeight: "bold" }}>{props.postData.user_id && session.getUserName()}</span>
+            <span style={{ fontWeight: "bold" }}>{getUserName(props.postData)}</span>
             <span>  {props.postData.caption}</span>
           </p>
           <p style={{
@@ -70,7 +70,8 @@ export default function UserPostModal(props) {
           </p>
           <Comments postId={props.postData._id} />
         </Card>
-        <Button variant="secondary" onClick={() => handleOnDelete(props.postData._id)} >Delete Post</Button>
+        {(props.postData.user_id && props.postData.user_id._id === session.get()._id) ?
+        <Button variant="secondary" onClick={() => handleOnDelete(props.postData._id)} >Delete Post</Button>:""}
       </Modal.Body>
     </Modal>
   );

@@ -36,7 +36,7 @@ function App() {
           <Route exact path={["/home", "/"]}>
             <Homepage />
           </Route>
-          <Route exact path="/profile">
+          <Route exact path="/profile/:user_id" children={<ProfilePage />}>
             <ProfilePage />
           </Route>
           <Route exact path="/addPost">

@@ -1,12 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 // import { Button } from 'react-bootstrap';
 import NavTag from '../components/NavTag';
 import session from "../utils/session";
 import API from '../utils/API';
 import UserPosts from '../components/UserPosts';
 
-export default function ProfilePage() {
-  const [posts, setPosts] = useState([])
+export default function ProfilePage(props) {
+  const pathParams = useParams();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     loadPosts()
@@ -14,8 +16,7 @@ export default function ProfilePage() {
 
   // loads all the posts of a particular user
   function loadPosts() {
-    const user_id = session.get()._id
-    API.userPosts(user_id)
+    API.userPosts(pathParams.user_id)
       .then(res =>
         setPosts(res.data)
       )
@@ -25,8 +26,8 @@ export default function ProfilePage() {
   return (
     <div>
       <NavTag />
-      <h3 style={{ margin: "100px" }}>{session.getUserName()}</h3>
-      <UserPosts posts={posts} loadPosts={loadPosts}/>
+      <h3 style={{ margin: "100px" }}>Profile</h3>
+      <UserPosts posts={posts} loadPosts={loadPosts} />
     </div>
 
   )
