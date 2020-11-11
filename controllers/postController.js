@@ -26,9 +26,9 @@ module.exports = {
             .sort({ created_at: 'descending' })
     },
 
-    getUserName:function (user_id) {
+    getUserName: function (user_id) {
         return db.Users
-            .find({_id: user_id })
+            .find({ _id: user_id })
     },
 
 }

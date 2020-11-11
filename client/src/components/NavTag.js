@@ -11,7 +11,7 @@ export default function NavTag() {
 
     const navStyle = {
         height: "70px",
-        backgroundColor:"white",
+        backgroundColor:"#f2f2f2",
         marginBottom: "40px",
     }
 
