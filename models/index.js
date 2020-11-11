@@ -1,6 +1,6 @@
 module.exports = {
     Users: require("./user"),
-    Posts:require("./posts"),
+    Posts: require("./posts"),
     Comments:require("./comments"),
   };
   
