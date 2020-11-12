@@ -104,28 +104,24 @@ module.exports = function (router) {
 
     // fetch friends page
     router.get('/api/friends/:user_id', function (req, res) {
-        let followinguser;
         friendController.FetchFriends(req.params.user_id)
-            .then(friendsAll => {
+            .then(friendsAll =>
                 res.status(200).json(friendsAll)
-                // friendsAll.map(friend =>
-                //     followinguser=friend.following)
-            })
-            // .then(
-            //     router.get('/api/posts/:followinguser', function (req, res) {
-            //         postController.displayPosts(req.params.followinguser)
-            //             .then(postsAll => res.status(200).json(postsAll))
-            //             .catch(err => res.status(400).json({ error: err.message }))
-            //     })
-            // )
-            // .catch(err => res.status(400).json({ error: err.message }))
+            )
+            .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    // // get the list of following users
-    // router.get('/api/friends/:user_id', function (req, res) {
-
-    // })
-
+    // fetch friends page
+    router.get('/api/posts/:user_id', function (req, res) {
+        friendController.FetchFriends(req.params.user_id)
+            .then(friendsAll => {
+                let followingUsers = friendsAll.map(friend => friend.following);
+                followingUsers.push(req.params.user_id);
+                return postController.displayPosts(followingUsers);
+            })
+            .then(postsAll => res.status(200).json(postsAll))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
 
     // If no API routes are hit, send the React app
     // router.all('*', function (req, res) {

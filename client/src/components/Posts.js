@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
 import { Card, Container, Button } from 'react-bootstrap';
 import Comments from './Comments';
+import session from '../utils/session';
 
 export default function Posts(props) {
     const [posts, setPosts] = useState([]);
@@ -13,13 +14,13 @@ export default function Posts(props) {
 
     // loads all the posts
     function loadPosts() {
-        API.getPosts()
+        API.getPosts(session.get()._id)
             .then(res =>
                 setPosts(res.data)
             )
             .catch(err => console.log(err));
     }
-    
+
     const incrementMe = () => {
         setLikeCount(likeCount + 1);
     }

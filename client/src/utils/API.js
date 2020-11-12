@@ -16,8 +16,8 @@ export default {
     },
 
     // get all posts
-    getPosts: function () {
-        return axios.get("/api/posts");
+    getPosts: function (user_id) {
+        return axios.get(`/api/posts/${user_id}`);
     },
 
     // add comment

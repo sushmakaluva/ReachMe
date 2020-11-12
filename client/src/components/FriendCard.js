@@ -27,12 +27,17 @@ export default function FriendCard(props) {
       <Col className="col-lg-12 col-md-6 col-sm-12 col-12">
         <Card style={{ padding: "20px", margin: "10px" }}>
           <span>
-            <li style={{ listStyleType: "none", fontWeight: "bold" }}>{props.user.first_name + " " + props.user.last_name}</li>
+            <li style={{ listStyleType: "none", fontWeight: "bold" }}>
+              {props.user.first_name + " " + props.user.last_name}
+            </li>
             <Button onClick={() => handleFollow(props.user._id)} style={{ margin: "10px" }}>
               {!following ? "Follow" : "Following"}
             </Button>
-            {following ? <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button> : ""}
-
+            {
+              following ?
+                <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button>
+                : ""
+            }
           </span>
         </Card>
       </Col>
