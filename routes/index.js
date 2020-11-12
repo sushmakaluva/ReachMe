@@ -1,8 +1,8 @@
 const path = require("path");
-
 const authController = require('../controllers/authController.js');
 const postController = require('../controllers/postController.js');
 const commentController = require('../controllers/commentController.js');
+const friendController = require('../controllers/friendController.js');
 
 module.exports = function (router) {
     // user sign-up
@@ -18,13 +18,6 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    // get friends
-    router.get('/api/friends', function (req, res) {
-        authController.SearchFriends()
-            .then(friendsAll => res.status(200).json(friendsAll))
-            .catch(err => res.status(400).json({ error: err.message }))
-    })
-
     //  add post
     router.post('/api/posts', function (req, res) {
         postController.create(req.body)
@@ -33,11 +26,11 @@ module.exports = function (router) {
     })
 
     //get posts
-    router.get('/api/posts', function (req, res) {
-        postController.displayPosts()
-            .then(postsAll => res.status(200).json(postsAll))
-            .catch(err => res.status(400).json({ error: err.message }))
-    })
+    // router.get('/api/posts', function (req, res) {
+    //     postController.displayPosts()
+    //         .then(postsAll => res.status(200).json(postsAll))
+    //         .catch(err => res.status(400).json({ error: err.message }))
+    // })
 
     // delete post
     router.delete('/api/post/:post_id', function (req, res) {
@@ -83,6 +76,56 @@ module.exports = function (router) {
             .then(userNames => res.status(200).json(userNames))
             .catch(err => res.status(400).json({ error: err.message }))
     })
+
+    // follow friends
+    router.post('/api/friends', function (req, res) {
+        friendController.addfollower(req.body.follower, req.body.following)
+            .then(dbfollow => res.status(200).json(dbfollow))
+            .catch(err => {
+                res.status(400).json({ error: err.message })
+            })
+    })
+
+    // unfollow friends
+    router.delete('/api/friends', function (req, res) {
+        friendController.removefollower(req.body.follower, req.body.following)
+            .then(dbunfollow => res.status(200).json(dbunfollow))
+            .catch(err => {
+                res.status(400).json({ error: err.message })
+            })
+    })
+
+    // get friends list
+    router.get('/api/friends', function (req, res) {
+        friendController.ListUsers()
+            .then(usersAll => res.status(200).json(usersAll))
+            .catch(err => res.status(400).json({ error: err.message }))
+    })
+
+    // fetch friends page
+    router.get('/api/friends/:user_id', function (req, res) {
+        let followinguser;
+        friendController.FetchFriends(req.params.user_id)
+            .then(friendsAll => {
+                res.status(200).json(friendsAll)
+                // friendsAll.map(friend =>
+                //     followinguser=friend.following)
+            })
+            // .then(
+            //     router.get('/api/posts/:followinguser', function (req, res) {
+            //         postController.displayPosts(req.params.followinguser)
+            //             .then(postsAll => res.status(200).json(postsAll))
+            //             .catch(err => res.status(400).json({ error: err.message }))
+            //     })
+            // )
+            // .catch(err => res.status(400).json({ error: err.message }))
+    })
+
+    // // get the list of following users
+    // router.get('/api/friends/:user_id', function (req, res) {
+
+    // })
+
 
     // If no API routes are hit, send the React app
     // router.all('*', function (req, res) {

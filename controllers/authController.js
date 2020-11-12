@@ -17,12 +17,5 @@ module.exports = {
                 else if (dbRes.length === 1 && dbRes[0].password === inputPassword)
                     return Promise.resolve(dbRes)
             })
-
     },
-
-    SearchFriends: function () {
-        return db.Users.find({})
-        // .populate(‘friends’, [‘fullname’, ‘username’], { limit: 10 })
-        // .exec()
-    }
 }

@@ -6,9 +6,9 @@ module.exports = {
             .create(post)
     },
 
-    displayPosts: function () {
+    displayPosts: function (followingusers) {
         return db.Posts
-            .find({})
+            .find({ user_id: followingusers })
             .populate('user_id', ['first_name', 'last_name'], db.Users)
             .sort({ created_at: 'descending' })
 

@@ -46,7 +46,27 @@ export default {
     },
 
     // get username from user_id
-    getUserNameFromId:function (user_id) {
+    getUserNameFromId: function (user_id) {
         return axios.get(`/api/user/${user_id}`);
+    },
+
+    // get all users list
+    getAllUsers: function () {
+        return axios.get('/api/friends');
+    },
+
+    // follow a friend
+    followFriend: function (friendData) {
+        return axios.post("/api/friends", friendData);
+    },
+
+    //unfollow a friend
+    unFollowFriend: function (friendData) {
+        return axios.delete("/api/friends", { data: friendData })
+    },
+
+    // fetch friends page
+    fetchFriendsofUser: function(user_id){
+        return axios.get(`/api/friends/${user_id}`)
     }
 };

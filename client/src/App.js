@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Login from './pages/Login';
 import logo from './logo/reachme_logo.png';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -9,6 +9,7 @@ import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
 import ProfilePage from './pages/ProfilePage';
 import AddPost from './pages/AddPost';
+import Users from './pages/Users';
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/addPost">
             <AddPost />
+          </Route>
+          <Route exact path="/friends">
+            <Users />
           </Route>
           <Route>
             <NoMatch />

@@ -19,6 +19,7 @@ export default function Posts(props) {
             )
             .catch(err => console.log(err));
     }
+    
     const incrementMe = () => {
         setLikeCount(likeCount + 1);
     }
