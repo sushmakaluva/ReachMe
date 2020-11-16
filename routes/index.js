@@ -117,8 +117,8 @@ module.exports = function (router) {
     })
 
     // If no API routes are hit, send the React app
-    // router.all('*', function (req, res) {
-    //     res.sendFile(path.join(__dirname, "../client/build/index.html"));
-    // });
+    router.all('*', function (req, res) {
+        res.sendFile(path.join(__dirname, "../client/build/index.html"));
+    });
 
 }
