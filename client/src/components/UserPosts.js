@@ -36,7 +36,7 @@ export default function UserPosts(props) {
             <Card style={cardStyle} onClick={() => handleOnClick(post)}>
               <img src={post.image} alt="profile-pic" style={imgStyle} />
               <p style={{ textAlign: "left", padding: "5px" }}>
-                <span style={{ fontWeight: "bold" }}>{post.user_id.first_name+" "+ post.user_id.last_name}</span>
+                <span style={{ fontWeight: "bold" }}>{post.user_id.first_name + " " + post.user_id.last_name}</span>
                 <span>  {post.caption}</span>
               </p>
             </Card>

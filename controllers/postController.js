@@ -30,5 +30,4 @@ module.exports = {
         return db.Users
             .find({ _id: user_id })
     },
-
 }

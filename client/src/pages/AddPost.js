@@ -3,25 +3,10 @@ import { storage } from "../firebase/firebase.js";
 import NavTag from '../components/NavTag';
 import API from '../utils/API';
 import { Jumbotron, Container, Form, Button, Card } from 'react-bootstrap';
-// import Emoji from '../components/Emoji';
+
 import session from "../utils/session";
 
 export default function AddPost() {
-    const containerStyle = {
-        margin: "auto",
-        height: "200px",
-        width: "800px",
-        marginTop: "100px",
-    }
-
-    // const imgStyle = {
-    //     margin: "auto",
-    //     height: "300px",
-    //     width: "300px",
-    //     float: "left"
-    // }
-
-    // const [emojiShow, setEmojiShow] = useState(false);
     const [formObject, setFormObject] = useState({
         caption: "",
         imageAsFile: "",
@@ -79,15 +64,26 @@ export default function AddPost() {
         reader.readAsDataURL(image)
     }
 
-    // function onButtonClick() {
-    //     setEmojiShow(true);
-    // }
+    const containerStyle = {
+        margin: "auto",
+        height: "200px",
+        width: "800px",
+        marginTop: "100px",
+    }
+
+    const jumbotronStyle = {
+        backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)"
+    }
+
+    const imgStyle = {
+        height: "100%", maxHeight: "300px", width: "100%", maxWidth: "300px", float: "left"
+    }
 
     return (
         <div>
             <NavTag />
             <Container style={containerStyle}>
-                <Jumbotron style={{backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",}}>
+                <Jumbotron style={jumbotronStyle}>
                     <h4 className="text-center">Create Post</h4>
                     <hr />
                     <Form onSubmit={handleOnSubmit}>
@@ -95,15 +91,13 @@ export default function AddPost() {
                             <Form.Label style={{ float: "left", fontWeight: "bold" }}>What's on your mind ?</Form.Label>
                             <Form.Control type="text" name="caption" as="textarea" rows={2} placeholder="Type here ..." onChange={handleInputChange} />
                         </Form.Group>
-                        {/* <Button onClick={onButtonClick}>Emoji</Button>
-                        {emojiShow ? <Emoji /> : null} */}
                         <br />
                         <span>
                             <label style={{ float: "left", fontWeight: "bold", }}>
                                 Upload your Image :
                           </label>
                             {(formObject.imageUpload) ?
-                                <Card style={{ width: "300px" }}><img src={formObject.imageUpload} alt="post-pic" style={{ height: "100%", maxHeight: "300px", width: "100%", maxWidth: "300px", float: "left" }} /></Card>
+                                <Card style={{ width: "300px" }}><img src={formObject.imageUpload} alt="post-pic" style={imgStyle} /></Card>
                                 : " "}
                         </span>
                         <span >
@@ -116,6 +110,6 @@ export default function AddPost() {
                     </Form>
                 </Jumbotron>
             </Container>
-        </div>
+        </div >
     )
 }

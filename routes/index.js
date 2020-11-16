@@ -25,13 +25,6 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    //get posts
-    // router.get('/api/posts', function (req, res) {
-    //     postController.displayPosts()
-    //         .then(postsAll => res.status(200).json(postsAll))
-    //         .catch(err => res.status(400).json({ error: err.message }))
-    // })
-
     // delete post
     router.delete('/api/post/:post_id', function (req, res) {
         postController.deletePost(req.params.post_id)

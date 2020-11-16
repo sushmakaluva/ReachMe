@@ -3,14 +3,12 @@ import { Form, Button } from 'react-bootstrap';
 import API from "../utils/API";
 import session from "../utils/session";
 
-
 export default function Login(props) {
 
     const [formObject, setFormObject] = useState({
         email: "",
         password: "",
     })
-
 
     function handleInputChange(event) {
         const { name, value } = event.target;

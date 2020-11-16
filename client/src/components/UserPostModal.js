@@ -32,7 +32,6 @@ export default function UserPostModal(props) {
         props.loadPosts();
       })
       .catch(err => console.log(err));
-
   }
 
   const getUserName = (postData) => {

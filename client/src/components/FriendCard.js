@@ -22,27 +22,33 @@ export default function FriendCard(props) {
     setFollowing(false);
   }
 
+  const cardStyle = {
+    padding: "20px", margin: "20px", width: "300px"
+  }
+
+  const liStyle = {
+    listStyleType: "none", fontWeight: "bold"
+  }
+
   return (
     <div>
-      
-        <Col>
-          <Card style={{ padding: "20px", margin: "20px", width:"300px"}}>
-            <span>
-              <li style={{ listStyleType: "none", fontWeight: "bold" }}>
-                {props.user.first_name + " " + props.user.last_name}
-              </li>
-              <Button onClick={() => handleFollow(props.user._id)} style={{ margin: "10px" }}>
-                {!following ? "Follow" : "Following"}
-              </Button>
-              {
-                following ?
-                  <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button>
-                  : ""
-              }
-            </span>
-          </Card>
-        </Col>
-      
+      <Col>
+        <Card style={cardStyle}>
+          <span>
+            <li style={liStyle}>
+              {props.user.first_name + " " + props.user.last_name}
+            </li>
+            <Button onClick={() => handleFollow(props.user._id)} style={{ margin: "10px" }}>
+              {!following ? "Follow" : "Following"}
+            </Button>
+            {
+              following ?
+                <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button>
+                : ""
+            }
+          </span>
+        </Card>
+      </Col>
     </div>
   )
 }

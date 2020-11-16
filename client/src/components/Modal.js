@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
 import API from "../utils/API";
-import "./modal.css";
 
 export default function SignupModal(props) {
 

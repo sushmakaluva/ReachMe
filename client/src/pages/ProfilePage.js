@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-// import { Button } from 'react-bootstrap';
 import NavTag from '../components/NavTag';
 import API from '../utils/API';
 import UserPosts from '../components/UserPosts';
