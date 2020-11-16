@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Button, Row, Col } from 'react-bootstrap';
+import { Card, Button, Col } from 'react-bootstrap';
 import session from "../utils/session";
 import API from '../utils/API';
 
@@ -24,23 +24,25 @@ export default function FriendCard(props) {
 
   return (
     <div>
-      <Col className="col-lg-12 col-md-6 col-sm-12 col-12">
-        <Card style={{ padding: "20px", margin: "10px" }}>
-          <span>
-            <li style={{ listStyleType: "none", fontWeight: "bold" }}>
-              {props.user.first_name + " " + props.user.last_name}
-            </li>
-            <Button onClick={() => handleFollow(props.user._id)} style={{ margin: "10px" }}>
-              {!following ? "Follow" : "Following"}
-            </Button>
-            {
-              following ?
-                <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button>
-                : ""
-            }
-          </span>
-        </Card>
-      </Col>
+      
+        <Col>
+          <Card style={{ padding: "20px", margin: "20px", width:"300px"}}>
+            <span>
+              <li style={{ listStyleType: "none", fontWeight: "bold" }}>
+                {props.user.first_name + " " + props.user.last_name}
+              </li>
+              <Button onClick={() => handleFollow(props.user._id)} style={{ margin: "10px" }}>
+                {!following ? "Follow" : "Following"}
+              </Button>
+              {
+                following ?
+                  <Button onClick={() => handleUnFollow(props.user._id)}>UnFollow</Button>
+                  : ""
+              }
+            </span>
+          </Card>
+        </Col>
+      
     </div>
   )
 }

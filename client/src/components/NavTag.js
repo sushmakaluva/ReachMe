@@ -11,14 +11,15 @@ export default function NavTag() {
 
     const navStyle = {
         height: "70px",
-        backgroundColor:"#f2f2f2",
+        // backgroundImage: "linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)",
+        backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",
         marginBottom: "40px",
     }
 
     const navLinkStyle = {
         color: "black",
         margin: "40px",
-        fontWeight:"bold"
+        fontWeight: "bold"
     }
 
     const logout = () => {
@@ -31,12 +32,12 @@ export default function NavTag() {
     }
 
     const getUserName = function () {
-        return session.get().first_name+" "+session.get().last_name;
+        return session.get().first_name + " " + session.get().last_name;
     }
 
     return (
         <div>
-            <Navbar style={navStyle} className="fixed-top">
+            <Navbar style={navStyle}>
                 <NavbarBrand className="navbar-brand" activekey="/home">
                     <Nav.Link href="/home" ><img src={logo} alt="logo" /></Nav.Link>
                 </NavbarBrand>
@@ -49,7 +50,6 @@ export default function NavTag() {
                     <NavDropdown title={getUserName()} id="nav-dropdown" style={navLinkStyle}>
                         <NavDropdown.Item href={`/profile/${session.get()._id}`} eventKey="4.1"> <i className="fa fa-user fa-fw"></i> Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/friends" eventKey="4.1"> <i className="fa fa-users fa-fw"></i> Followers</NavDropdown.Item>
-                        <NavDropdown.Item eventKey="4.2"><i className="fa fa-envelope fa-fw"></i>  Message</NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item eventKey="4.3" onClick={logout}><i className="fa fa-sign-out fa-fw"></i> Logout</NavDropdown.Item>
                     </NavDropdown>

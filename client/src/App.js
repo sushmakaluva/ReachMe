@@ -24,14 +24,14 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login">
-            <img src={logo} alt="logo" />
             <Container style={{ width: "35%" }}>
-              <Jumbotron>
-                <Login handleOnClick={handleOnClick} />
-                <SignupModal
-                  show={modalShow}
-                  onHide={() => setModalShow(false)} />
-              </Jumbotron>
+                  <img src={logo} alt="logo"/>
+                  <Jumbotron style={{backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",}}>
+                    <Login handleOnClick={handleOnClick} />
+                    <SignupModal
+                      show={modalShow}
+                      onHide={() => setModalShow(false)} />
+                  </Jumbotron>
             </Container>
           </Route>
           <Route exact path={["/home", "/"]}>

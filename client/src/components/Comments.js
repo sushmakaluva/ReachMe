@@ -16,7 +16,7 @@ export default function Comments(props) {
 
     useEffect(() => {
         loadComments(props.postId)
-    }, [])
+    }, [props.postId])
 
     // loads all the posts
     function loadComments(postId) {

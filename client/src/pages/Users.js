@@ -32,9 +32,9 @@ export default function Users() {
   return (
     <div>
       <NavTag />
-      <Jumbotron className="justify-content-center" style={{ margin: "100px" }}>
+      <Jumbotron className="justify-content-center" style={{ margin: "100px", backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",}}>
         <h1>Friends</h1>
-        <Row>
+        <Row className="col-lg-12 col-md-6 col-sm-6 col-6">
           {users
             .filter(user => user._id !== session.get()._id)
             .map(user =>

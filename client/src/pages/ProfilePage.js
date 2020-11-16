@@ -36,7 +36,7 @@ export default function ProfilePage(props) {
   return (
     <div>
       <NavTag />
-      <h3 style={{ margin: "100px" }}>{userName}</h3>
+      <h3 style={{ margin: "100px" }}><b>{userName}</b></h3>
       <UserPosts posts={posts} loadPosts={loadPosts} />
     </div>
 
