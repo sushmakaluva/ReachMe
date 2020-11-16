@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import API from "../utils/API";
 import session from "../utils/session";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-// import SignupModal from './Modal';
-// import { createBrowserHistory as history } from 'history';
 
 export default function Login(props) {
 
@@ -12,7 +9,6 @@ export default function Login(props) {
         email: "",
         password: "",
     })
-
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -36,7 +32,7 @@ export default function Login(props) {
 
     return (
         <div>
-            <Form onSubmit={manageOnSubmit} >
+            <Form onSubmit={manageOnSubmit}>
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" name="email" placeholder="Enter email" autoComplete="on" onChange={handleInputChange} />

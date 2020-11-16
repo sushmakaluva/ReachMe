@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-// import { Button } from 'react-bootstrap';
 import NavTag from '../components/NavTag';
 import API from '../utils/API';
 import UserPosts from '../components/UserPosts';
@@ -36,7 +35,7 @@ export default function ProfilePage(props) {
   return (
     <div>
       <NavTag />
-      <h3 style={{ margin: "100px" }}>{userName}</h3>
+      <h3 style={{ margin: "100px" }}><b>{userName}</b></h3>
       <UserPosts posts={posts} loadPosts={loadPosts} />
     </div>
 

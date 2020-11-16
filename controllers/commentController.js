@@ -16,5 +16,4 @@ module.exports = {
         return db.Comments
             .deleteOne({ _id: comment_id })
     },
-
 }

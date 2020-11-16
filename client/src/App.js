@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Login from './pages/Login';
 import logo from './logo/reachme_logo.png';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -9,6 +9,7 @@ import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
 import ProfilePage from './pages/ProfilePage';
 import AddPost from './pages/AddPost';
+import Users from './pages/Users';
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -23,14 +24,14 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login">
-            <img src={logo} alt="logo" />
             <Container style={{ width: "35%" }}>
-              <Jumbotron>
-                <Login handleOnClick={handleOnClick} />
-                <SignupModal
-                  show={modalShow}
-                  onHide={() => setModalShow(false)} />
-              </Jumbotron>
+                  <img src={logo} alt="logo"/>
+                  <Jumbotron style={{backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",}}>
+                    <Login handleOnClick={handleOnClick} />
+                    <SignupModal
+                      show={modalShow}
+                      onHide={() => setModalShow(false)} />
+                  </Jumbotron>
             </Container>
           </Route>
           <Route exact path={["/home", "/"]}>
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/addPost">
             <AddPost />
+          </Route>
+          <Route exact path="/friends">
+            <Users />
           </Route>
           <Route>
             <NoMatch />

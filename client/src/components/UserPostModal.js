@@ -32,7 +32,6 @@ export default function UserPostModal(props) {
         props.loadPosts();
       })
       .catch(err => console.log(err));
-
   }
 
   const getUserName = (postData) => {
@@ -47,6 +46,7 @@ export default function UserPostModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={props.show} onHide={props.onHide}
+      
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">

@@ -16,9 +16,9 @@ export default function Comments(props) {
 
     useEffect(() => {
         loadComments(props.postId)
-    }, [])
+    }, [props.postId])
 
-    // loads all the posts
+    // load all the posts
     function loadComments(postId) {
         API.getComments(postId)
             .then(res => setComments(res.data))
@@ -39,12 +39,20 @@ export default function Comments(props) {
             .catch(err => console.log(err));
     }
 
+    const liStyle = {
+        listStyleType: "none", textAlign: "left", padding: "5px"
+    }
+
+    const nameStyle = {
+        fontWeight: "bold", padding: "5px"
+    }
+
     return (
         <div>
             {
                 comments.map(userComment =>
-                    <li style={{ listStyleType: "none", textAlign: "left", padding: "5px" }}>
-                        <span style={{ fontWeight: "bold", padding: "5px" }}>{userComment.user_id.first_name + " " + userComment.user_id.last_name}</span>
+                    <li style={liStyle}>
+                        <span style={nameStyle}>{userComment.user_id.first_name + " " + userComment.user_id.last_name}</span>
                         <span>{userComment.comment}</span>
                         <span> {(userComment.user_id._id === session.get()._id) ?
                             <button type="button" className="close" aria-label="Close" onClick={() => deleteCommentonClick(userComment._id, userComment.post_id)}>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../utils/API';
 import { Card, Container, Button } from 'react-bootstrap';
 import Comments from './Comments';
+import session from '../utils/session';
 
 export default function Posts(props) {
     const [posts, setPosts] = useState([]);
@@ -13,12 +14,13 @@ export default function Posts(props) {
 
     // loads all the posts
     function loadPosts() {
-        API.getPosts()
+        API.getPosts(session.get()._id)
             .then(res =>
                 setPosts(res.data)
             )
             .catch(err => console.log(err));
     }
+
     const incrementMe = () => {
         setLikeCount(likeCount + 1);
     }
@@ -47,6 +49,10 @@ export default function Posts(props) {
         maxHeight: "500px"
     }
 
+    const BtnStyle = {
+        borderRadius: "20px", width: "50px", height: "30px", margin: "5px", marginBottom: "20px"
+    }
+
     return (
         <div>
             { posts.length ?
@@ -62,7 +68,7 @@ export default function Posts(props) {
                                 <span style={{ fontWeight: "bold" }}>{post.user_id && post.user_id.first_name + " " + post.user_id.last_name}</span>
                                 <span>  {post.caption}</span>
                             </p>
-                            <Button size="sm" variant="danger" onClick={incrementMe} style={{ borderRadius: "20px", width: "50px", height: "30px", margin: "5px", marginBottom: "20px" }}> <i className="heart fa fa-heart-o"></i>{likeCount}</Button>
+                            <Button size="sm" variant="danger" onClick={incrementMe} style={BtnStyle}> <i className="heart fa fa-heart-o"></i>{likeCount}</Button>
                             <p style={{
                                 textDecoration: "underline", textAlign: "left",
                                 marginLeft: "5px", color: "grey"
