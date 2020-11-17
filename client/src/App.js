@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Login from './pages/Login';
 import logo from './logo/reachme_logo.png';
-import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Jumbotron, Container } from 'react-bootstrap';
 import "./App.css";
 import SignupModal from './components/Modal';
@@ -23,16 +23,15 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-        <Redirect to="/login" />
           <Route exact path="/login">
             <Container style={{ width: "35%" }}>
-                  <img src={logo} alt="logo"/>
-                  <Jumbotron style={{backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",}}>
-                    <Login handleOnClick={handleOnClick} />
-                    <SignupModal
-                      show={modalShow}
-                      onHide={() => setModalShow(false)} />
-                  </Jumbotron>
+              <img src={logo} alt="logo" />
+              <Jumbotron style={{ backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)", }}>
+                <Login handleOnClick={handleOnClick} />
+                <SignupModal
+                  show={modalShow}
+                  onHide={() => setModalShow(false)} />
+              </Jumbotron>
             </Container>
           </Route>
           <Route exact path={["/home", "/"]}>
