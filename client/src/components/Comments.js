@@ -18,7 +18,7 @@ export default function Comments(props) {
         loadComments(props.postId)
     }, [props.postId])
 
-    // load all the posts
+    // load comments
     function loadComments(postId) {
         API.getComments(postId)
             .then(res => setComments(res.data))

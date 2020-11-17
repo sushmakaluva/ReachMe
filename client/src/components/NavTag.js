@@ -11,7 +11,6 @@ export default function NavTag() {
 
     const navStyle = {
         height: "70px",
-        // backgroundImage: "linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%)",
         backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)",
         marginBottom: "40px",
     }

@@ -22,6 +22,7 @@ export default function Login(props) {
             password: formObject.password
         })
             .then(function (response) {
+                delete response.data.password;
                 session.set(response.data);
                 window.location.href = "/home"
             })

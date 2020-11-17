@@ -14,7 +14,10 @@ module.exports = function (router) {
     // user login
     router.post('/api/login', function (req, res) {
         authController.searchByEmail(req.body.email, req.body.password)
-            .then(dbUsers => res.status(200).json(dbUsers[0]))
+            .then(dbUsers => {
+                delete dbUsers[0].password;
+                res.status(200).json(dbUsers[0])
+            })
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
@@ -104,7 +107,7 @@ module.exports = function (router) {
             .catch(err => res.status(400).json({ error: err.message }))
     })
 
-    // fetch friends page
+    // fetch posts
     router.get('/api/posts/:user_id', function (req, res) {
         friendController.FetchFriends(req.params.user_id)
             .then(friendsAll => {

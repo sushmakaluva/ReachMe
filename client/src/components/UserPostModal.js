@@ -46,7 +46,6 @@ export default function UserPostModal(props) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       show={props.show} onHide={props.onHide}
-      
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -56,10 +55,12 @@ export default function UserPostModal(props) {
       <Modal.Body>
         <Card style={cardStyle}>
           <img src={props.postData.image} alt="profile-pic" style={imgStyle} />
-          <p style={{ textAlign: "left", padding: "5px" }}>
-            <span style={{ fontWeight: "bold" }}>{getUserName(props.postData)}</span>
-            <span>  {props.postData.caption}</span>
-          </p>
+          {props.postData.caption && (
+            <p style={{ textAlign: "left", padding: "5px" }}>
+              <span style={{ fontWeight: "bold" }}>{getUserName(props.postData)}</span>
+              <span>  {props.postData.caption}</span>
+            </p>
+          )}
           <p style={{
             textDecoration: "underline", textAlign: "left",
             marginLeft: "5px", color: "grey"
@@ -68,7 +69,9 @@ export default function UserPostModal(props) {
           <Comments postId={props.postData._id} />
         </Card>
         {(props.postData.user_id && props.postData.user_id._id === session.get()._id) ?
-        <Button variant="secondary" onClick={() => handleOnDelete(props.postData._id)} >Delete Post</Button>:""}
+          <Button
+            variant="secondary" onClick={() => handleOnDelete(props.postData._id)} >Delete Post
+          </Button> : ""}
       </Modal.Body>
     </Modal>
   );

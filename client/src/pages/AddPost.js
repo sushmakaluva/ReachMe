@@ -97,7 +97,9 @@ export default function AddPost() {
                                 Upload your Image :
                           </label>
                             {(formObject.imageUpload) ?
-                                <Card style={{ width: "300px" }}><img src={formObject.imageUpload} alt="post-pic" style={imgStyle} /></Card>
+                                <Card
+                                    style={{ width: "300px" }}><img src={formObject.imageUpload} alt="post-pic" style={imgStyle} />
+                                </Card>
                                 : " "}
                         </span>
                         <span >
