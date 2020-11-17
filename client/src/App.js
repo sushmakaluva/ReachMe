@@ -10,6 +10,7 @@ import Homepage from './pages/Homepage';
 import ProfilePage from './pages/ProfilePage';
 import AddPost from './pages/AddPost';
 import Users from './pages/Users';
+import session from "./utils/session";
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
@@ -34,6 +35,10 @@ function App() {
               </Jumbotron>
             </Container>
           </Route>
+          {
+            !session.get() &&
+              <Redirect to="/login" />
+          }
           <Route exact path={["/home", "/"]}>
             <Homepage />
           </Route>
