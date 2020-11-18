@@ -20,23 +20,39 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.1.0",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.10.0",
+    "@tinymce/tinymce-react": "^3.8.1",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.5.3",
     "bootstrap-autocomplete": "^2.3.7",
+<<<<<<< HEAD
     "cors": "^2.8.5",
+=======
+    "cookie-parser": "^1.4.5",
+    "emoji-picker-react": "^3.2.4",
+>>>>>>> df480b888a9da2f4fb0f09e4b566948e9d413fcf
     "express": "^4.16.3",
+    "express-session": "^1.17.1",
+    "firebase": "^8.0.0",
+    "font-awesome": "^4.7.0",
     "if-env": "^1.0.4",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "mongoose": "^5.10.10",
     "path": "^0.12.7",
     "pusher": "^4.0.0",
     "react-bootstrap": "^1.4.0",
+<<<<<<< HEAD
     "typed.js": "^2.0.10",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.7"
+=======
+    "react-bootstrap-typeahead": "^5.1.2",
+    "react-escape-outside": "^0.1.2",
+    "typed.js": "^2.0.10"
+>>>>>>> df480b888a9da2f4fb0f09e4b566948e9d413fcf
   }
 }

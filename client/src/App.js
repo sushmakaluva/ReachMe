@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import Login from './pages/Login';
 import logo from './logo/reachme_logo.png';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Jumbotron, Container } from 'react-bootstrap';
 import "./App.css";
 import SignupModal from './components/Modal';
 import NoMatch from './pages/NoMatch';
 import Homepage from './pages/Homepage';
+import ProfilePage from './pages/ProfilePage';
+import AddPost from './pages/AddPost';
+import Users from './pages/Users';
+import session from "./utils/session";
 
 function App() {
-
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handleOnClick = (e) => {
     e.preventDefault();
@@ -22,9 +25,9 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path="/login">
-            <img src={logo} alt="logo" />
             <Container style={{ width: "35%" }}>
-              <Jumbotron>
+              <img src={logo} alt="logo" />
+              <Jumbotron style={{ backgroundImage: "linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)", }}>
                 <Login handleOnClick={handleOnClick} />
                 <SignupModal
                   show={modalShow}
@@ -32,8 +35,21 @@ function App() {
               </Jumbotron>
             </Container>
           </Route>
-          <Route exact path={["/home","/"]}>
+          {
+            !session.get() &&
+              <Redirect to="/login" />
+          }
+          <Route exact path={["/home", "/"]}>
             <Homepage />
+          </Route>
+          <Route exact path="/profile/:user_id" children={<ProfilePage />}>
+            <ProfilePage />
+          </Route>
+          <Route exact path="/addPost">
+            <AddPost />
+          </Route>
+          <Route exact path="/friends">
+            <Users />
           </Route>
           <Route>
             <NoMatch />
